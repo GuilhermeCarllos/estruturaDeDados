@@ -1,0 +1,65 @@
+#ifndef MINHA_BIBLIOTECA_H
+#define MINHA_BIBLIOTECA_H
+
+// Função para realizar a travessia do vetor
+void travessiaVetor(int array[], int tamanhoDoArray) {
+    printf("\n Realizando a travessia: ");
+
+    for (int i = 0; i < tamanhoDoArray; i++) {
+        printf("%d", array[i]);
+    }
+    printf("\n");
+}
+
+// Função para buscar um elemento
+void buscaElemento(int array[], int tamanhoDoArray, int valorDoArray) {
+    int valorElemento;
+    printf("Digite o valor do elemento: ");
+    scanf("%d", &valorElemento);
+
+    int elementoEncontrado = 0; // Variável para verificar se o elemento foi encontrado
+
+    for (int i = 0; i < tamanhoDoArray; i++) {
+        if (valorElemento == array[i]) {
+            printf("Elemento encontrado na posição %d\n", i);
+            elementoEncontrado = 1; // Atualiza a variável para indicar que o elemento foi encontrado
+        }
+    }
+
+    if (!elementoEncontrado) {
+        printf("Elemento não encontrado\n");
+    }
+}
+
+// Função para inserir um elemento
+void insereElemento(int array[], int tamanhoDoArray, int valorInserido, int posicao) {
+    if (posicao >= 0 && posicao < tamanhoDoArray) { // Verifica se a posição está dentro dos limites do array
+        array[posicao] = valorInserido;
+        printf("Elemento %d inserido com sucesso no array na posição %d\n", valorInserido, posicao);
+    } else {
+        printf("Posição não encontrada!!\n");
+    }
+}
+
+// Função para excluir o elemento
+void excluirElemento(int array[], int tamanhoDoArray, int valorInserido) {
+    int index = -1; // Inicializa o índice com -1 para indicar que o elemento não foi encontrado
+
+    for (int i = 0; i < tamanhoDoArray; i++) {
+        if (valorInserido == array[i]) {
+            index = i;
+            break; // Encerra o loop assim que o elemento é encontrado
+        }
+    }
+
+    if (index != -1) {
+        for (int i = index; i < tamanhoDoArray - 1; i++) {
+            array[i] = array[i + 1];
+        }
+        printf("Elemento %d excluído com sucesso!!\n", valorInserido);
+    } else {
+        printf("Elemento não encontrado\n");
+    }
+}
+
+#endif
